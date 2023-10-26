@@ -1,0 +1,45 @@
+/*
+ * KEYPAD_program.c
+ *
+ * Created: 10/21/2023 2:54:02 PM
+ *  Author: DELL
+ */ 
+
+#include "../HAL/KEYPAD_interface.h"
+#include "../HAL/KEYPAD_cfg.h"
+#include "../MCAL/DIO_interface.h"
+
+	uint8 rowPins[KEYPAD_NUM_ROWS] = {KEYPAD_FIRST_ROW_PIN_ID,KEYPAD_SECOND_ROW_PIN_ID,KEYPAD_THIRD_ROW_PIN_ID,KEYPAD_FORTH_ROW_PIN_ID};
+	uint8 colPins[KEYPAD_NUM_COLS] = {KEYPAD_FIRST_COL_PIN_ID,KEYPAD_SECOND_COL_PIN_ID,KEYPAD_THIRD_COL_PIN_ID,KEYPAD_FORTH_COL_PIN_ID};
+
+uint8 KEYPAD_getPressedKey(void)
+{
+	uint8 row,col;
+	DIO_voidSetPinDirection(KEYPAD_ROW_PORT_ID,KEYPAD_FIRST_ROW_PIN_ID,INPUT_PIN);
+	DIO_voidSetPinDirection(KEYPAD_ROW_PORT_ID,KEYPAD_SECOND_ROW_PIN_ID,INPUT_PIN);
+	DIO_voidSetPinDirection(KEYPAD_ROW_PORT_ID,KEYPAD_THIRD_ROW_PIN_ID,INPUT_PIN);
+	DIO_voidSetPinDirection(KEYPAD_ROW_PORT_ID,KEYPAD_FORTH_ROW_PIN_ID,INPUT_PIN);
+	
+	DIO_voidSetPinDirection(KEYPAD_COL_PORT_ID,KEYPAD_FIRST_COL_PIN_ID,INPUT_PIN);
+	DIO_voidSetPinDirection(KEYPAD_COL_PORT_ID,KEYPAD_SECOND_COL_PIN_ID,INPUT_PIN);
+	DIO_voidSetPinDirection(KEYPAD_COL_PORT_ID,KEYPAD_THIRD_COL_PIN_ID,INPUT_PIN);
+	DIO_voidSetPinDirection(KEYPAD_COL_PORT_ID,KEYPAD_FORTH_COL_PIN_ID,INPUT_PIN);
+	
+	while(1)
+	{
+		for(row=0; row<KEYPAD_NUM_ROWS; row++)
+		{
+			DIO_voidSetPinDirection(KEYPAD_ROW_PORT_ID,rowPins[row],OUTPUT_PIN);
+			DIO_voidSetPinValue(KEYPAD_ROW_PORT_ID,rowPins[row],KEYPAD_BUTTON_PRESSED);
+			for(col=0; col<KEYPAD_NUM_COLS; col++)
+			{
+				if(DIO_voidGetBitValue(KEYPAD_COL_PORT_ID,colPins[col])==KEYPAD_BUTTON_PRESSED)
+				{
+					return ((row*KEYPAD_NUM_COLS)+col+1);
+				}
+			}
+			DIO_voidSetPinDirection(KEYPAD_ROW_PORT_ID,rowPins[row],INPUT_PIN);
+		}
+	}
+}
+
