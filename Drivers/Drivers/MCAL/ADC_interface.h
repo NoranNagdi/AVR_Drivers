@@ -13,7 +13,7 @@
 
 
 typedef enum{
-	CH_0,CH_1,CH_2,CH_3,CH_4
+	CH_0,CH_1,CH_2,CH_3,CH_4,CH_5,CH_6
 }Channel_num;
 
 void ADC_init(void);

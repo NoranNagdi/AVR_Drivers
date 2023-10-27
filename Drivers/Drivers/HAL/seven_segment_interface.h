@@ -16,7 +16,11 @@ void sevenSegment_init();
 
 void sevenSegment_display(uint8 num);
 
+void display_all(uint16 num);
+
 void enableOne(uint8 com_port,uint8 com_pin);
+
+void disableOne(uint8 com_port,uint8 com_pin);
 
 void sevenSegment_deinit();
 

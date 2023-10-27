@@ -4,10 +4,10 @@
  * Created: 10/21/2023 2:54:02 PM
  *  Author: DELL
  */ 
-
+#include "../MCAL/DIO_interface.h"
 #include "../HAL/KEYPAD_interface.h"
 #include "../HAL/KEYPAD_cfg.h"
-#include "../MCAL/DIO_interface.h"
+
 
 	uint8 rowPins[KEYPAD_NUM_ROWS] = {KEYPAD_FIRST_ROW_PIN_ID,KEYPAD_SECOND_ROW_PIN_ID,KEYPAD_THIRD_ROW_PIN_ID,KEYPAD_FORTH_ROW_PIN_ID};
 	uint8 colPins[KEYPAD_NUM_COLS] = {KEYPAD_FIRST_COL_PIN_ID,KEYPAD_SECOND_COL_PIN_ID,KEYPAD_THIRD_COL_PIN_ID,KEYPAD_FORTH_COL_PIN_ID};

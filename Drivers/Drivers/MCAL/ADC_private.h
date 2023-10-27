@@ -20,19 +20,19 @@
 #define SFIOR     *((volatile uint8*)(0x50))
 
 /*ADMUX bits*/
-enum ADMUX_bits{
+typedef enum{
 	MUX0,MUX1,MUX2,MUX3,MUX4,ADLAR,REFS0,REFS1
-};
+}ADMUX_bits;
 	
 /*ADCSRA bits*/
-enum ADCSRA_bits{
+enum{
 	ADPS0,ADPS1,ADPS2,ADIE,ADIF,ADATE,ADSC,ADEN
-};
+}ADCSRA_bits;
 
 /*SFIOR bits*/
-enum SFIOR_bits{
+enum{
 	ADTS0 = 5, ADTS1=6, ADTS2=7
-};
+}SFIOR_bits;
 
 
 #endif /* ADC_PRIVATE_H_ */

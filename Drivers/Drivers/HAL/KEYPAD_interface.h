@@ -11,6 +11,10 @@
 
 #include "../Std_Types.h"
 
+/* Keypad button logic configurations */
+#define KEYPAD_BUTTON_PRESSED            LOGIC_LOW
+#define KEYPAD_BUTTON_RELEASED           LOGIC_HIGH
+
 
 uint8 KEYPAD_getPressedKey(void);
 

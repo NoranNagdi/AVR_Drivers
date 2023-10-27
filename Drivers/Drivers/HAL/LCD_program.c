@@ -4,11 +4,10 @@
  * Created: 10/21/2023 11:42:45 AM
  *  Author: DELL
  */ 
-
+#define F_CPU 16000000
+#include "../MCAL/DIO_interface.h"
 #include "../HAL/LCD_interface.h"
 #include "../HAL/LCD_cfg.h"
-#include "../MCAL/DIO_interface.h"
-#define F_CPU 16000000
 #include <util/delay.h>
 
 void LCD_init(void)

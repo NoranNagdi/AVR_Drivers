@@ -35,4 +35,6 @@ void DIO_voidSetPinValue(uint8 copy_u8PortID,uint8 copy_u8PinID, uint8 copy_u8Pi
 
 uint8 DIO_voidGetBitValue(uint8 copy_u8PortID, uint8 copy_PinID);
 
+void DIO_TogglePin(uint8 copy_u8PortID, uint8 copy_PinID);
+
 #endif /* DIO_INTERFACE_H_ */

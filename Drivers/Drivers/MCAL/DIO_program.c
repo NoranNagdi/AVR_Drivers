@@ -206,3 +206,26 @@ uint8 DIO_voidGetBitValue(uint8 copy_u8PortID, uint8 copy_PinID)
 	}
 	return value;
 }
+
+
+void DIO_TogglePin(uint8 copy_u8PortID, uint8 copy_PinID)
+{
+	switch(copy_u8PortID)
+	{
+		case PORTA_ID:
+		TOGGLE_BIT(PORTA,copy_PinID);
+		break;
+		
+		case PORTB_ID:
+		TOGGLE_BIT(PORTB,copy_PinID);
+		break;
+		
+		case PORTC_ID:
+		TOGGLE_BIT(PORTC,copy_PinID);
+		break;
+		
+		case PORTD_ID:
+		TOGGLE_BIT(PORTD,copy_PinID);
+		break;
+	}
+}
