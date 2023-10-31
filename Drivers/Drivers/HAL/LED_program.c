@@ -33,7 +33,7 @@ void LED_TOGGLE(uint8 PORTID, uint8 PINID)
 void LED_BLINK(uint8 PORTID, uint8 PINID)
 {	
 	DIO_voidSetPinValue(PORTID, PINID, LOGIC_HIGH);
-	_delay_ms(1000);
+	_delay_ms(800);
 	DIO_voidSetPinValue(PORTID, PINID, LOGIC_LOW);
-	_delay_ms(1000);
+	_delay_ms(800);
 }

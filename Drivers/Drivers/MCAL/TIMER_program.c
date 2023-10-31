@@ -15,18 +15,18 @@ void (*TIMER0_CMP_ptr)(void);
 
 void TIMER0_init()
 {
-	#if(TIMER_MODE == NORMAL_MODE)
-	{
+#if(TIMER_MODE == NORMAL_MODE)
+{
 		/*Set Normal mode*/
 		CLEAR_BIT(TCCR0,WGM00);
 		CLEAR_BIT(TCCR0,WGM01);
 		
 		/*Enable timer overflow interrupt*/
 		SET_BIT(TIMSK,TOIE0);
-	}
-	#elif(TIMER_MODE == CTC_MODE)
-	{
-		/*Set Normal mode*/
+}
+#elif(TIMER_MODE == CTC_MODE)
+{
+		/*Set CTC mode*/
 		CLEAR_BIT(TCCR0,WGM00);
 		SET_BIT(TCCR0,WGM01);
 		
@@ -35,11 +35,22 @@ void TIMER0_init()
 		
 		/*Enable timer compare interrupt*/
 		SET_BIT(TIMSK,OCIE0);
-	}
-	#endif
+}
+#elif(TIMER_MODE == FAST_PWM_MODE)
+{
+	/*Set FAST PWM mode*/
+	SET_BIT(TCCR0,WGM00);
+	SET_BIT(TCCR0,WGM01);
+	
+	/*Set INVERTING or Not*/
+	CLEAR_BIT(TCCR0,COM00);
+	SET_BIT(TCCR0,COM01);
+	
+}
+#endif
 	
 	/*Set prescaler*/
-	SET_BIT(TCCR0,CS00);
+	CLEAR_BIT(TCCR0,CS00);
 	SET_BIT(TCCR0,CS01);
 	CLEAR_BIT(TCCR0,CS02);
 	
@@ -48,6 +59,34 @@ void TIMER0_init()
 	
 }
 
+void TIMER0_PWM_init(void)
+{
+	/*Set FAST PWM mode*/
+	SET_BIT(TCCR0,WGM00);
+	SET_BIT(TCCR0,WGM01);
+		
+	/*Set INVERTING or Not*/
+	CLEAR_BIT(TCCR0,COM00);
+	SET_BIT(TCCR0,COM01);
+
+	/*Set prescaler*/
+	CLEAR_BIT(TCCR0,CS00);
+	SET_BIT(TCCR0,CS01);
+	CLEAR_BIT(TCCR0,CS02);
+	
+	/*Set TCNT value*/
+	TCNT0 = 0;
+	
+}
+void set_TCNT(uint8 value)
+{
+	TCNT0 = value;
+}
+
+void set_OCR(uint8 value)
+{
+	OCR0 = value;
+}
 void TIMER0_callback(uint8 mode, void (*ptr)(void))
 {
 	switch(mode)
@@ -61,7 +100,7 @@ void TIMER0_callback(uint8 mode, void (*ptr)(void))
 	}
 }
 
-void TIMER0_deinit()
+void TIMER0_deinit(void)
 {
 	/*Stop Timer*/
 	CLEAR_BIT(TCCR0,CS00);

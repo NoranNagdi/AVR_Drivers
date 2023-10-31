@@ -14,7 +14,13 @@
 
 void TIMER0_init(void);
 
-void TIMER0_deinit();
+void TIMER0_PWM_init(void);
+
+void set_OCR(uint8 value);
+
+void set_TCNT(uint8 value);
+
+void TIMER0_deinit(void);
 
 void TIMER0_callback(uint8 mode,void (*ptr)(void));
 

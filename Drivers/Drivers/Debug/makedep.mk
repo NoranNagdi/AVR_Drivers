@@ -24,3 +24,7 @@ MCAL\GIE_program.c
 
 MCAL\TIMER_program.c
 
+MCAL\UART_program.c
+
+MCAL\WDT_program.c
+

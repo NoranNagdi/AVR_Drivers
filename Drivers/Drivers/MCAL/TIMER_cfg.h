@@ -11,9 +11,10 @@
 
 #define TIMER_MODE  CTC_MODE
 
-#define NORMAL_MODE 0
-#define CTC_MODE    2
-#define PWM_MODE    3
+#define NORMAL_MODE      0
+#define PHASE_PWM_MODE    1
+#define CTC_MODE         2
+#define FAST_PWM_MODE    3
 
 
 
