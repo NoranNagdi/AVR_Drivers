@@ -33,7 +33,7 @@ uint8 KEYPAD_getPressedKey(void)
 			DIO_voidSetPinValue(KEYPAD_ROW_PORT_ID,rowPins[row],KEYPAD_BUTTON_PRESSED);
 			for(col=0; col<KEYPAD_NUM_COLS; col++)
 			{
-				if(DIO_voidGetBitValue(KEYPAD_COL_PORT_ID,colPins[col])==KEYPAD_BUTTON_PRESSED)
+				if(DIO_voidGetPinValue(KEYPAD_COL_PORT_ID,colPins[col])==KEYPAD_BUTTON_PRESSED)
 				{
 					return ((row*KEYPAD_NUM_COLS)+col+1);
 				}

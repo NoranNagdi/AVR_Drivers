@@ -33,7 +33,8 @@ void DIO_voidSetPortValue(uint8 copy_u8PortID, uint8 copy_u8PortVal);
 void DIO_voidSetPinDirection(uint8 copy_u8PortID,uint8 copy_u8PinID, uint8 copy_u8PinDir);
 void DIO_voidSetPinValue(uint8 copy_u8PortID,uint8 copy_u8PinID, uint8 copy_u8PinValue);
 
-uint8 DIO_voidGetBitValue(uint8 copy_u8PortID, uint8 copy_PinID);
+uint8 DIO_voidGetPinValue(uint8 copy_u8PortID, uint8 copy_PinID);
+uint8 DIO_voidGetPortValue(uint8 copy_u8PortID);
 
 void DIO_TogglePin(uint8 copy_u8PortID, uint8 copy_PinID);
 

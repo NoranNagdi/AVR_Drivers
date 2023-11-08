@@ -8,6 +8,7 @@
 #include "../MCAL/ADC_interface.h"
 #include "../MCAL/ADC_private.h"
 #include "../Common_Macros.h"
+#include "../HAL/LED_interface.h"
 
 void ADC_init(void)
 {
@@ -107,14 +108,15 @@ void ADC_autotrigger_readChannel(uint8 CH_num, uint16* ptr)
 {
 	/*initialize channel to 0*/
 	ADMUX |= ((ADMUX & 0xE0) | (CH_num & 0x07));
-	
+		
 	/*wait for flag*/
 	while(BIT_IS_CLEAR(ADCSRA,ADIF));
 	
-	/*clear flag*/
-	SET_BIT(ADCSRA,ADIF);
-	
 	/*save the data*/
 	*ptr = ADC;
+	
+	/*clear flag*/
+	SET_BIT(ADCSRA,ADIF);
+
 }
 

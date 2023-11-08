@@ -14,7 +14,7 @@
 #define RED_LED_PORT  PORTB_ID
 #define RED_LED_PIN   PIN7_ID
 
-#define LED_PORT PORTA_ID
+#define LED_PORT PORTD_ID
 
 #define GREEN_LED_PIN PIN4_ID
 #define BLUE_LED_PIN PIN5_ID

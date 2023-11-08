@@ -19,6 +19,10 @@ void UART_receive(uint8* value);
 
 void UART_transmit(uint8 value);
 
+void UART_INT_receive(uint8* value);
+
+void UART_callback(void (*ptr)(void));
+
 
 
 #endif /* UART_INTERFACE_H_ */

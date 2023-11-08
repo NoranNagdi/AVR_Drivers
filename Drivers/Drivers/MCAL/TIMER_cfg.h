@@ -9,7 +9,7 @@
 #ifndef TIMER_CFG_H_
 #define TIMER_CFG_H_
 
-#define TIMER_MODE  CTC_MODE
+#define TIMER_MODE  FAST_PWM_MODE
 
 #define NORMAL_MODE      0
 #define PHASE_PWM_MODE    1

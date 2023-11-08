@@ -155,7 +155,7 @@ void DIO_voidSetPinValue(uint8 copy_u8PortID,uint8 copy_u8PinID, uint8 copy_u8Pi
 	}
 }
 
-uint8 DIO_voidGetBitValue(uint8 copy_u8PortID, uint8 copy_PinID)
+uint8 DIO_voidGetPinValue(uint8 copy_u8PortID, uint8 copy_PinID)
 {
 	uint8 value = LOGIC_LOW;
 	switch(copy_u8PortID)
@@ -207,6 +207,29 @@ uint8 DIO_voidGetBitValue(uint8 copy_u8PortID, uint8 copy_PinID)
 	return value;
 }
 
+uint8 DIO_voidGetPortValue(uint8 copy_u8PortID)
+{
+	uint8 value = LOGIC_LOW;
+
+	/* Read the port value as required */
+	switch(copy_u8PortID)
+	{
+	case PORTA_ID:
+		value = PINA;
+		break;
+	case PORTB_ID:
+		value = PINB;
+		break;
+	case PORTC_ID:
+		value = PINC;
+		break;
+	case PORTD_ID:
+		value = PIND;
+		break;
+	}
+
+	return value;
+}
 
 void DIO_TogglePin(uint8 copy_u8PortID, uint8 copy_PinID)
 {

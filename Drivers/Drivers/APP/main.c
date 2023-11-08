@@ -17,33 +17,19 @@
 #include "../MCAL/TIMER_interface.h"
 #include "../MCAL/WDT_interface.h"
 #include "../MCAL/UART_interface.h"
+#include "../MCAL/SPI_interface.h"
+#include "../MCAL/I2C_interface.h"
+#include "../HAL/EXT_EEPROM_interface.h"
+#include "../MCAL/INT_EEPROM_interface.h"
+#include "../HAL/MOTOR_interface.h"
 #include <util/delay.h>
-
-uint8 receivedValue ;
-uint16* ptr = NULL;
-uint16 analogValue = 0;
-uint8 percentage = 0;
 
 
 int main(void)
-{
-	DIO_voidSetPinDirection(PORTA_ID,PIN0_ID,INPUT_PIN);
-	ADC_init();
-	LCD_init();
-	UART_init(9600);
-	LCD_moveCursor(0,0);
-	LCD_displayString("Temp: ");
-	
-
-    while (1) 
-    {	
-		ADC_readChannel(CH_0,ptr);
-		analogValue = (*ptr * 5000UL)/1023;
-		percentage = (analogValue*100UL)/1023;
-		UART_receive(&receivedValue);
-		UART_transmit(percentage);
-		LCD_moveCursor(0,5);
-		LCD_intgerToString(receivedValue);
+{	
+	while(1)
+	{	
+		
 	}
 }
 

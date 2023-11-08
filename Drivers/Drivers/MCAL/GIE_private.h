@@ -13,7 +13,7 @@
 
 #define SREG *((volatile uint8*)(0x5F))
 
-#define I_BIT PIN7_ID
+#define I_BIT 7
 
 
 

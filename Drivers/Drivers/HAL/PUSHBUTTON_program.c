@@ -14,14 +14,14 @@
 uint8 buttonIsPressed(uint8 PORTID, uint8 PINID)
 {
 	DIO_voidSetPinDirection(PORTID,PINID,INPUT_PIN);
-	if(DIO_voidGetBitValue(PORTID,PINID))
+	if(DIO_voidGetPinValue(PORTID,PINID))
 	{
 		_delay_ms(PUSH_BUTTON_DEBOUNCING_TIME);
-		if(DIO_voidGetBitValue(PORTID,PINID))
+		if(DIO_voidGetPinValue(PORTID,PINID))
 		{
 		return LOGIC_LOW;
 		}
-		while(DIO_voidGetBitValue(PORTID,PINID));
+		while(DIO_voidGetPinValue(PORTID,PINID));
 	}
 	else
 	{

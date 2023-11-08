@@ -38,6 +38,9 @@ void UART_init(uint16 baudRate)
 	
 	UCSRA = 0x00;
 	
+	/*enable receive interrupt*/
+	SET_BIT(UCSRB,RXCIE);
+	
 }
 
 void UART_receive(uint8* value)
@@ -53,3 +56,23 @@ void UART_transmit(uint8 value)
 	UDR = value;
 	SET_BIT(UCSRA,UDRE);
 }
+
+void UART_INT_receive(uint8* value)
+{
+	*value = UDR;
+}
+
+void (*UART_ptr)(void);
+
+
+void UART_callback(void (*ptr)(void))
+{
+	UART_ptr = ptr;
+}
+
+void __vector_13()__attribute__((signal));
+void __vector_13()
+{
+	UART_ptr();
+}
+

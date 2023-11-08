@@ -9,6 +9,8 @@
 #include "../MCAL/TIMER_private.h"
 #include "../Common_Macros.h"
 
+#include "../HAL/LED_interface.h"
+
 
 void (*TIMER0_OVF_ptr)(void);
 void (*TIMER0_CMP_ptr)(void);
@@ -65,7 +67,7 @@ void TIMER0_PWM_init(void)
 	SET_BIT(TCCR0,WGM00);
 	SET_BIT(TCCR0,WGM01);
 		
-	/*Set INVERTING or Not*/
+	/*Set non-INVERTING*/
 	CLEAR_BIT(TCCR0,COM00);
 	SET_BIT(TCCR0,COM01);
 

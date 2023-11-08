@@ -20,10 +20,10 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
@@ -40,6 +40,19 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+    <avrtoolserialnumber />
+    <avrdeviceexpectedsignature>0x1E9502</avrdeviceexpectedsignature>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolOptions xmlns="">
+        <InterfaceProperties>
+        </InterfaceProperties>
+      </ToolOptions>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolNumber xmlns="">
+      </ToolNumber>
+      <ToolName xmlns="">Simulator</ToolName>
+    </com_atmel_avrdbg_tool_simulator>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -126,6 +139,18 @@
     <Compile Include="Common_Macros.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\EXT_EEPROM_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\EXT_EEPROM_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\EXT_EEPROM_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\EXT_EEPROM_program.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\KEYPAD_cfg.h">
       <SubType>compile</SubType>
     </Compile>
@@ -151,6 +176,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\LED_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\MOTOR_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\MOTOR_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\MOTOR_program.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\PUSHBUTTON_cfg.h">
@@ -217,6 +251,42 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\GIE_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\I2C_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\I2C_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\I2C_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\I2C_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INT_EEPROM_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INT_EEPROM_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INT_EEPROM_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\INT_EEPROM_program.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\SPI_program.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\TIMER_cfg.h">
